@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #111116;
+    color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pagina {
+    width: min(900px, 90%);
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.subtitulo {
+    color: #a78bfa;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+.cabecalho h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    margin-bottom: 8px;
+}
+
+.descricao {
+    color: #aaa6b5;
+    font-size: 1.1rem;
+}
+
+.atributos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.atributo {
+    background-color: #1d1b25;
+    border: 1px solid #393344;
+    border-radius: 12px;
+    padding: 25px 15px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.atributo:hover {
+    transform: translateY(-4px);
+    border-color: #8b5cf6;
+}
+
+.atributo h2 {
+    color: #c4b5fd;
+    font-size: 1rem;
+    margin-bottom: 14px;
+}
+
+.valor {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.modificador {
+    margin-top: 4px;
+    font-size: 0.9rem;
+    color: #bdbdbd;
+    font-weight: 600;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 600px) {
+    .atributos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pagina {
+        padding-top: 40px;
+    }
+}

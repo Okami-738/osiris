@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+     <input type="file" id="arquivoExcel" accept=".xlsx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="pagina">
+        <header class="cabecalho">
+            <p class="subtitulo">FICHA DE PERSONAGEM</p>
+            <h1><span id="valor-nome">—</span></h1>
+            <p class="descricao">Atributos</p>
+        </header>
+
+        <section class="atributos" aria-label="Atributos do personagem">
+            <article class="atributo">
+                <h2>Força</h2>
+                <p class="valor"><span id="valor-forca">—</span></p>
+                <p class="modificador"><span id="mod-forca">—</span></p>
+            </article>
+
+            <article class="atributo">
+                <h2>Destreza</h2>
+                <p class="valor"><span id="valor-destreza">—</span></p>
+                <p class="modificador"><span id="mod-destreza">—</span></p>
+            </article>
+
+            <article class="atributo">
+                <h2>Constituição</h2>
+                <p class="valor"><span id="valor-constituicao">—</span></p>
+                <p class="modificador"><span id="mod-constituicao">—</span></p>
+            </article>
+
+            <article class="atributo">
+                <h2>Inteligência</h2>
+                <p class="valor"><span id="valor-inteligencia">—</span></p>
+                <p class="modificador"><span id="mod-inteligencia">—</span></p>
+            </article>
+
+            <article class="atributo">
+                <h2>Sabedoria</h2>
+                <p class="valor"><span id="valor-sabedoria">—</span></p>
+                <p class="modificador"><span id="mod-sabedoria">—</span></p>
+            </article>
+
+            <article class="atributo">
+                <h2>Carisma</h2>
+                <p class="valor"><span id="valor-carisma">—</span></p>
+                <p class="modificador"><span id="mod-carisma">—</span></p>
+            </article>
+        </section>
+    </main>
+</body>
+<script src="read.js"></script>
+</html>
