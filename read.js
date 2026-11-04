@@ -33,6 +33,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 };
 
+                const pericias = {
+                    B22: { totalCelula: "L22", nomeCelula: "B22" },
+                    B23: { totalCelula: "L23", nomeCelula: "B23" },
+                    B24: { totalCelula: "L24", nomeCelula: "B24" },
+                    B25: { totalCelula: "L25", nomeCelula: "B25" },
+                    B26: { totalCelula: "L26", nomeCelula: "B26" },
+                    B27: { totalCelula: "L27", nomeCelula: "B27" },
+                    B28: { totalCelula: "L28", nomeCelula: "B28" },
+                    B29: { totalCelula: "L29", nomeCelula: "B29" },
+                    B30: { totalCelula: "L30", nomeCelula: "B30" },
+                    B31: { totalCelula: "L31", nomeCelula: "B31" },
+                    B32: { totalCelula: "L32", nomeCelula: "B32" },
+                    B33: { totalCelula: "L33", nomeCelula: "B33" },
+                    B34: { totalCelula: "L34", nomeCelula: "B34" },
+                    B35: { totalCelula: "L35", nomeCelula: "B35" },
+                };
+
 
 
                 console.log("--- ATUALIZANDO HTML DO PERSONAGEM ---");
@@ -69,6 +86,63 @@ document.addEventListener("DOMContentLoaded", function() {
                         elementoNome.innerText = nomeReal;
                     }
                 }
+ 
+                // --- PROCESSAMENTO DAS PERÍCIAS ---
+                const containerPericias = document.getElementById("container-pericias");
+                if (containerPericias) {
+                    // Limpa perícias anteriores ao carregar novo arquivo
+                    containerPericias.innerHTML = "";
+
+                    for (const chave in pericias) {
+                        const celulaTotal = pericias[chave].totalCelula;
+                        const celulaNome = pericias[chave].nomeCelula;
+
+                        const objTotal = planilha[celulaTotal];
+                        const objNome = planilha[celulaNome];
+
+                        const valorTotal = objTotal ? objTotal.v : null;
+                        const valorNomePericia = objNome ? objNome.v : null;
+
+                        // Verifica se 'totalCelula' possui um valor válido (diferente de null, undefined ou vazio)
+                        if (valorTotal !== null && valorTotal !== undefined && String(valorTotal).trim() !== "") {
+
+
+                            // FORMATAÇÃO DO VALOR (Adiciona + se for positivo, mantém o - se for negativo ou exibe normal)
+                              let valorFormatado = valorTotal;
+                             const numero = Number(valorTotal);
+            
+                                // Se for um número válido, aplica a regra de sinais
+                                if (!isNaN(numero)) {
+                                    if (numero > 0) {
+                                        valorFormatado = `+${numero}`;
+                                    } else {
+                                        valorFormatado = `${numero}`; // Se for negativo já vem com "-", se for 0 fica "0"
+                                    }
+                                }
+
+
+                            // LIMITA O NOME DA PERÍCIA A 8 CARACTERES:
+                             let nomeFormatado = valorNomePericia ? String(valorNomePericia) : "Perícia";
+                            if (nomeFormatado.length > 8) {
+                                  nomeFormatado = nomeFormatado.substring(0, 8) + "..."; // Corta em 8 e adiciona "..."
+                            }
+
+                            
+                            // Cria a tag do elemento da perícia parecido com a estrutura de atributos
+                            const artigoPericia = document.createElement("article");
+                            artigoPericia.className = "pericia";
+
+                            artigoPericia.innerHTML = `
+                             <h2>${nomeFormatado}</h2>
+                             <p class="pericia_valor"><span>${valorFormatado}</span></p>
+                      `;
+
+                            containerPericias.appendChild(artigoPericia);
+                            console.log(`Perícia Exibida: ${valorNomePericia} -> Total: ${valorTotal}`);
+                        }
+                    }
+                }
+
 
             };
 

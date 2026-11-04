@@ -13,46 +13,84 @@
         <header class="cabecalho">
             <p class="subtitulo">FICHA DE PERSONAGEM</p>
             <h1><span id="valor-nome">—</span></h1>
-            <p class="descricao">Atributos</p>
         </header>
 
-        <section class="atributos" aria-label="Atributos do personagem">
-            <article class="atributo">
-                <h2>Força</h2>
-                <p class="valor"><span id="valor-forca">—</span></p>
-                <p class="modificador"><span id="mod-forca">—</span></p>
-            </article>
+       <div class="conteudo-principal">
+            <!-- COLUNA DA ESQUERDA: Atributos e Perícias -->
+            <div class="coluna-esquerda"><p class="descricao">Atributos</p>
+                <section>
+                    <div class="atributos" aria-label="Atributos do personagem">
+                        <article class="atributo">
+                            <h2>Força</h2>
+                            <p class="valor"><span id="valor-forca">—</span></p>
+                            <p class="modificador"><span id="mod-forca">—</span></p>
+                        </article>
 
-            <article class="atributo">
-                <h2>Destreza</h2>
-                <p class="valor"><span id="valor-destreza">—</span></p>
-                <p class="modificador"><span id="mod-destreza">—</span></p>
-            </article>
+                        <article class="atributo">
+                            <h2>Destreza</h2>
+                            <p class="valor"><span id="valor-destreza">—</span></p>
+                            <p class="modificador"><span id="mod-destreza">—</span></p>
+                        </article>
 
-            <article class="atributo">
-                <h2>Constituição</h2>
-                <p class="valor"><span id="valor-constituicao">—</span></p>
-                <p class="modificador"><span id="mod-constituicao">—</span></p>
-            </article>
+                        <article class="atributo">
+                            <h2>Constituição</h2>
+                            <p class="valor"><span id="valor-constituicao">—</span></p>
+                            <p class="modificador"><span id="mod-constituicao">—</span></p>
+                        </article>
 
-            <article class="atributo">
-                <h2>Inteligência</h2>
-                <p class="valor"><span id="valor-inteligencia">—</span></p>
-                <p class="modificador"><span id="mod-inteligencia">—</span></p>
-            </article>
+                        <article class="atributo">
+                            <h2>Inteligência</h2>
+                            <p class="valor"><span id="valor-inteligencia">—</span></p>
+                            <p class="modificador"><span id="mod-inteligencia">—</span></p>
+                        </article>
 
-            <article class="atributo">
-                <h2>Sabedoria</h2>
-                <p class="valor"><span id="valor-sabedoria">—</span></p>
-                <p class="modificador"><span id="mod-sabedoria">—</span></p>
-            </article>
+                        <article class="atributo">
+                            <h2>Sabedoria</h2>
+                            <p class="valor"><span id="valor-sabedoria">—</span></p>
+                            <p class="modificador"><span id="mod-sabedoria">—</span></p>
+                        </article>
 
-            <article class="atributo">
-                <h2>Carisma</h2>
-                <p class="valor"><span id="valor-carisma">—</span></p>
-                <p class="modificador"><span id="mod-carisma">—</span></p>
-            </article>
+                        <article class="atributo">
+                            <h2>Carisma</h2>
+                            <p class="valor"><span id="valor-carisma">—</span></p>
+                            <p class="modificador"><span id="mod-carisma">—</span></p>
+                        </article>
+                    </div>
+                </section>
+
+                <section>
+                    <p class="descricao">Perícias</p>
+                    <div id="container-pericias" class="pericias" aria-label="Perícias do personagem">
+                        <!-- Gerado dinamicamente pelo read.js em 4 colunas compactas -->
+                    </div>
+                </section>
+            </div>
+
+
+            <!-- COLUNA DA DIREITA: Foto, Vida e Energia -->
+            <aside class="painel-lateral">
+        
+                
+                <div class="status-grupo">
+                    <div class="status-item">
+                        <h3>Vida</h3>
+                        <p><span id="valor-vida">—</span></p>
+                    </div>
+                    <div class="status-item">
+                        <h3>Energia</h3>
+                        <p><span id="valor-energia">—</span></p>
+                    </div>
+                </div>
+            </aside>
+
+        <!-- NOVO: Seção reservada para rendilhar as perícias preenchidas 
+         <header class="cabecalho">
+            <p class="descricao">Perícias</p>
+        </header>
+        <section id="container-pericias" class="pericias" aria-label="Perícias do personagem">
+           
         </section>
+        -->
     </main>
 </body>
 <script src="read.js"></script>
