@@ -33,3 +33,4 @@ function atualizarInterfaceStatus(tipo) {
         elemBarra.style.width = `${porcentagem}%`;
     }
 }
+

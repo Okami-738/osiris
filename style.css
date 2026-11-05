@@ -235,6 +235,104 @@ body {
 }
 /*#endregion Atributos e Perícias */
 
+/* Estilos para Clicabilidade e Modal de Dados */
+.atributo, .pericia {
+    cursor: pointer;
+    user-select: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.modal-overlay.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.modal-conteudo {
+    background-color: #1d1b25;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.btn-fechar {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.8rem;
+    color: var(--cor-modificador);
+    cursor: pointer;
+}
+
+.btn-fechar:hover {
+    color: var(--cor-texto);
+}
+
+#modal-titulo {
+    color: var(--cor-destaque);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.dado-animado {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--cor-atributo);
+    background: #111116;
+    border: 2px solid var(--cor-borda);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    line-height: 96px;
+    margin: 0 auto 20px auto;
+}
+
+.dado-animado.rolando {
+    animation: balancar 0.1s infinite alternate;
+}
+
+@keyframes balancar {
+    0% { transform: scale(1.0) rotate(-5deg); }
+    100% { transform: scale(1.1) rotate(5deg); }
+}
+
+.detalhes-rolagem {
+    font-size: 1rem;
+    color: var(--cor-modificador);
+    margin-bottom: 10px;
+}
+
+.resultado-total {
+    font-size: 1.8rem;
+    color: var(--cor-texto);
+}
+
+.resultado-total strong {
+    color: #4ade80;
+}
+
+
+
+
 
 /* Responsividade para telas menores */
 @media (max-width: 900px) {

@@ -1,3 +1,67 @@
+// Variable global para controlar o intervalo da animação
+let intervaloRolagem = null;
+
+// Função principal que faz rolar o dado (1d20 + bónus)
+function rolarDado(nome, bonus) {
+    const modal = document.getElementById("modal-dado");
+    const elemTitulo = document.getElementById("modal-titulo");
+    const elemDado = document.getElementById("resultado-dado");
+    const elemDetalhes = document.getElementById("detalhe-calculo");
+    const elemTotal = document.getElementById("resultado-total-valor");
+
+    if (!modal) return;
+
+    // Configura o título e a fórmula (ex: 1d20 + 3)
+    elemTitulo.innerText = nome;
+    const sinal = bonus >= 0 ? "+" : "";
+    elemDetalhes.innerText = `1d20 ${sinal}${bonus}`;
+    elemTotal.innerText = "...";
+    
+    // Abre o pop-up e ativa a animação
+    modal.classList.remove("hidden");
+    elemDado.classList.add("rolando");
+
+    // Efeito visual dos números a mudar rapidamente (a cada 50ms)
+    intervaloRolagem = setInterval(() => {
+        elemDado.innerText = Math.floor(Math.random() * 20) + 1;
+    }, 50);
+
+    // Para o dado após 600ms e calcula o total final
+    setTimeout(() => {
+        clearInterval(intervaloRolagem);
+        elemDado.classList.remove("rolando");
+
+        const resultadoDado = Math.floor(Math.random() * 20) + 1;
+        elemDado.innerText = resultadoDado;
+
+        const total = resultadoDado + bonus;
+        elemTotal.innerText = total;
+    }, 600);
+}
+
+// Funções para fechar a modal ao clicar fora ou no X
+function fecharModal(event) {
+    if (event.target.id === "modal-dado") {
+        fecharModalForcado();
+    }
+}
+
+function fecharModalForcado() {
+    const modal = document.getElementById("modal-dado");
+    if (modal) modal.classList.add("hidden");
+    if (intervaloRolagem) clearInterval(intervaloRolagem);
+}
+
+// Permite fechar a modal premindo a tecla ESC
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        fecharModalForcado();
+    }
+});
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const seletorArquivo = document.getElementById("arquivoExcel");
 
@@ -20,7 +84,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
 
 
-                
+                // Configura os cliques nos cartões fixos de Atributo
+                const cardsAtributos = document.querySelectorAll(".atributo");
+                 cardsAtributos.forEach(card => {
+                  card.addEventListener("click", function() {
+                  const nomeAtributo = card.querySelector("h2").innerText;
+                  const modTexto = card.querySelector(".modificador span").innerText;
+                    
+                   // Converte o modificador (ex: "+2" ou "-1") num número inteiro
+                      const bonus = parseInt(modTexto) || 0;
+
+                      rolarDado(nomeAtributo, bonus);
+                    });
+    });
 
                 //#region definimos o objeto com as coordenadas das células
                 const nomes = {
@@ -165,6 +241,16 @@ document.addEventListener("DOMContentLoaded", function() {
                              <h2>${nomeFormatado}</h2>
                              <p class="pericia_valor"><span>${valorFormatado}</span></p>
                              `;
+
+                            // --- NOVO: Adiciona a rolagem ao clicar na perícia ---
+                            artigoPericia.addEventListener("click", function() {
+                                // Usa o nome completo da perícia (valorNomePericia) em vez do cortado
+                                const nomeExibicao = valorNomePericia ? String(valorNomePericia) : "Perícia";
+                                const bonus = isNaN(numero) ? 0 : numero;
+                                
+                                rolarDado(nomeExibicao, bonus);
+                            });
+
 
                             containerPericias.appendChild(artigoPericia);
                             //console.log(`Perícia Exibida: ${valorNomePericia} -> Total: ${valorTotal}`);

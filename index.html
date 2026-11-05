@@ -139,6 +139,23 @@
             </aside>
 
     </main>
+    <!-- Modal de Rolagem de Dados -->
+<div id="modal-dado" class="modal-overlay hidden" onclick="fecharModal(event)">
+    <div class="modal-conteudo">
+        <span class="btn-fechar" onclick="fecharModalForcado()">&times;</span>
+        <h3 id="modal-titulo">Rolagem</h3>
+        <div class="modal-corpo">
+            <div id="resultado-dado" class="dado-animado">d20</div>
+            <div class="detalhes-rolagem">
+                <span id="detalhe-calculo">1d20 + 0</span>
+            </div>
+            <div class="resultado-total">
+                <span>Total: </span>
+                <strong id="resultado-total-valor">0</strong>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script src="stts.js"></script>
 <script src="read.js"></script>
