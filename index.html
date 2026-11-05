@@ -71,18 +71,75 @@
             <aside class="painel-lateral">
                 <div class="coluna-esquerda"><p class="descricao">Atributos</p>
                 <div class="status-grupo">
-                    <div class="status-item">
-                        <h3>Vida</h3>
-                        <p><span id="valor-vida">—</span></p>
-                    </div>
-                    <div class="status-item">
-                        <h3>Energia</h3>
-                        <p><span id="valor-energia">—</span></p>
-                    </div>
-                </div>
+                    <div class="status-grupo">
+                            <!-- BARRA DE VIDA -->
+                            <div class="barra-status-container" id="container-vida">
+                                <div class="barra-cabecalho">
+                                    <span class="barra-titulo">Vida</span>
+                                    <span class="barra-valores"><span id="valor-vida-atual">0</span> / <span id="valor-vida-max">0</span></span>
+                                </div>
+                                <div class="barra-controles">
+                                    <div class="botoes-esquerda">
+                                        <button class="btn-status" onclick="alterarStatus('vida', -5)">&laquo; -5</button>
+                                        <button class="btn-status" onclick="alterarStatus('vida', -1)">&lt; -1</button>
+                                    </div>
+                                    <div class="botoes-direita">
+                                        <button class="btn-status" onclick="alterarStatus('vida', 1)">+1 &gt;</button>
+                                        <button class="btn-status" onclick="alterarStatus('vida', 5)">+5 &raquo;</button>
+                                    </div>
+                                </div>
+                                <div class="trilho-barra">
+                                    <div class="preenchimento-barra barra-vida" id="barra-vida"></div>
+                                </div>
+                            </div>
+
+                            <!-- BARRA DE ENERGIA -->
+                            <div class="barra-status-container" id="container-energia">
+                                <div class="barra-cabecalho">
+                                    <span class="barra-titulo">Energia</span>
+                                    <span class="barra-valores"><span id="valor-energia-atual">0</span> / <span id="valor-energia-max">0</span></span>
+                                </div>
+                                <div class="barra-controles">
+                                    <div class="botoes-esquerda">
+                                        <button class="btn-status" onclick="alterarStatus('energia', -5)">&laquo; -5</button>
+                                        <button class="btn-status" onclick="alterarStatus('energia', -1)">&lt; -1</button>
+                                    </div>
+                                    <div class="botoes-direita">
+                                        <button class="btn-status" onclick="alterarStatus('energia', 1)">+1 &gt;</button>
+                                        <button class="btn-status" onclick="alterarStatus('energia', 5)">+5 &raquo;</button>
+                                    </div>
+                                </div>
+                                <div class="trilho-barra">
+                                    <div class="preenchimento-barra barra-energia" id="barra-energia"></div>
+                                </div>
+                            </div>
+
+                            <!-- BARRA DE INTEGRIDADE -->
+                            <div class="barra-status-container" id="container-integridade">
+                                <div class="barra-cabecalho">
+                                    <span class="barra-titulo">Integridade</span>
+                                    <span class="barra-valores"><span id="valor-integridade-atual">0</span> / <span id="valor-integridade-max">0</span></span>
+                                </div>
+                                <div class="barra-controles">
+                                    <div class="botoes-esquerda">
+                                        <button class="btn-status" onclick="alterarStatus('integridade', -5)">&laquo; -5</button>
+                                        <button class="btn-status" onclick="alterarStatus('integridade', -1)">&lt; -1</button>
+                                    </div>
+                                    <div class="botoes-direita">
+                                        <button class="btn-status" onclick="alterarStatus('integridade', 1)">+1 &gt;</button>
+                                        <button class="btn-status" onclick="alterarStatus('integridade', 5)">+5 &raquo;</button>
+                                    </div>
+                                </div>
+                                <div class="trilho-barra">
+                                    <div class="preenchimento-barra barra-integridade" id="barra-integridade"></div>
+                                </div>
+                            </div>
+                   </div>
+               </div>
             </aside>
 
     </main>
 </body>
+<script src="stts.js"></script>
 <script src="read.js"></script>
 </html>

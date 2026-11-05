@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     alert("A aba 'ficha pessoal' não foi encontrada!");
                     return;
                 }
+
+
+                
+
                 //#region definimos o objeto com as coordenadas das células
                 const nomes = {
                     nome: { valorCelula: "F3" }
@@ -169,7 +173,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 // #endregion
 
+                // atualiza os dados na barra
+                for (const chave in status) {
+                    const celulaAtual = status[chave].atualCelula;
+                    const celulaMax = status[chave].maximaCelula;
 
+                    const valAtual = planilha[celulaAtual] ? Number(planilha[celulaAtual].v) || 0 : 0;
+                    const valMax = planilha[celulaMax] ? Number(planilha[celulaMax].v) || 0 : 0;
+
+                    // Atualiza o objeto global do status.js
+                    dadosStatus[chave].atual = valAtual;
+                    dadosStatus[chave].max = valMax;
+
+                    // Atualiza a interface da barra correspondente
+                    atualizarInterfaceStatus(chave);
+                }
             };
 
             leitor.readAsArrayBuffer(arquivo);

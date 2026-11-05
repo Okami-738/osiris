@@ -66,14 +66,94 @@ body {
     gap: 20px;
     /*position: static;  Alterado de sticky para static: agora rola junto com a página */
 }
+/*#region status */
+
+
 .status-grupo {
      background-color: #1d1b25;
     border: 1px solid #393344;
     border-radius: 12px;
     padding: 20px;
 }
+/* Container de cada Barra de Status */
+.barra-status-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.barra-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.barra-titulo {
+    font-size: 1rem;
+    color:var( --cor-texto);
+}
+
+.barra-valores {
+    font-size: 0.95rem;
+    color: #ffffff;
+}
+
+.barra-controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.botoes-esquerda, .botoes-direita {
+    display: flex;
+    gap: 6px;
+}
+
+/* Botões de + e - */
+.btn-status {
+    background: transparent;
+    border: none;
+    color: #aaaaaa;
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 2px 4px;
+    transition: color 0.15s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 7px;
+}
+
+.btn-status:hover {
+    color: #ffffff;
+}
+
+/* Trilho cinza escuro de fundo */
+.trilho-barra {
+    width: 100%;
+    height: 14px;
+    background-color: #25232e;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+/* Barra interna animada */
+.preenchimento-barra {
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+    transition: width 0.3s ease;
+}
+
+/* Cores específicas de cada barra (igual ao layout da imagem) */
+.barra-vida { background-color: #e63946; }        
+.barra-energia { background-color: #0077b6; }    
+.barra-integridade { background-color: #ffb703; } 
 
 
+/*#endregion Status*/
+
+/*#region Atributos e Perícias */
 .descricao {
     color: #aaa6b5;
     font-size: 1.1rem;
@@ -153,6 +233,8 @@ body {
     transform: translateY(-4px);
     border-color: #8b5cf6;
 }
+/*#endregion Atributos e Perícias */
+
 
 /* Responsividade para telas menores */
 @media (max-width: 900px) {
