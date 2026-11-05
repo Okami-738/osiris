@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const leitor = new FileReader();
 
+            // Quando o arquivo for carregado, processamos os dados
             leitor.onload = function(e) {
                 const dados = new Uint8Array(e.target.result);
                 const workbook = XLSX.read(dados, { type: "array" });
@@ -17,12 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     alert("A aba 'ficha pessoal' não foi encontrada!");
                     return;
                 }
-
-                // 1. Aqui definimos o objeto com as coordenadas das células
+                //#region definimos o objeto com as coordenadas das células
                 const nomes = {
                     nome: { valorCelula: "F3" }
                 };
-
+                
                 const atributos = {
                     forca: { valorCelula: "G12", modCelula: "K12" },
                     destreza: { valorCelula: "G14", modCelula: "K14" },
@@ -48,10 +48,32 @@ document.addEventListener("DOMContentLoaded", function() {
                     B33: { totalCelula: "L33", nomeCelula: "B33" },
                     B34: { totalCelula: "L34", nomeCelula: "B34" },
                     B35: { totalCelula: "L35", nomeCelula: "B35" },
+                    C22: { totalCelula: "Z22", nomeCelula: "P22" },
+                    C23: { totalCelula: "Z23", nomeCelula: "P23" },
+                    C24: { totalCelula: "Z24", nomeCelula: "P24" },
+                    C25: { totalCelula: "Z25", nomeCelula: "P25" },
+                    C26: { totalCelula: "Z26", nomeCelula: "P26" },
+                    C27: { totalCelula: "Z27", nomeCelula: "P27" },
+                    C28: { totalCelula: "Z28", nomeCelula: "P28" },
+                    C29: { totalCelula: "Z29", nomeCelula: "P29" },
+                    C30: { totalCelula: "Z30", nomeCelula: "P30" },
+                    C31: { totalCelula: "Z31", nomeCelula: "P31" },
+                    C32: { totalCelula: "Z32", nomeCelula: "P32" },
+                    C33: { totalCelula: "Z33", nomeCelula: "P33" },
+                    C34: { totalCelula: "Z34", nomeCelula: "P34" },
+                    C35: { totalCelula: "Z35", nomeCelula: "P35" }
+
                 };
 
+                const status = {
+                    vida: { atualCelula: "AC7", maximaCelula: "AF7" },
+                    energia: { atualCelula: "AC15", maximaCelula: "AF15" },
+                    integridade: { atualCelula: "AM7", maximaCelula: "AP7" }
+                };
 
+                //#endregion
 
+                //#region processamento atributo, nome e status
                 console.log("--- ATUALIZANDO HTML DO PERSONAGEM ---");
 
                 // 2. Este é o loop onde a "const atributo" nasce e roda para cada linha do objeto acima
@@ -73,20 +95,23 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (elementoValor) elementoValor.innerText = valorReal;
                     if (elementoMod) elementoMod.innerText = modificadorReal;
 
-                    console.log(`Atualizado: ${atributo.toUpperCase()} -> Valor: ${valorReal}, Mod: ${modificadorReal}`);
+                    //console.log(`Atualizado: ${atributo.toUpperCase()} -> Valor: ${valorReal}, Mod: ${modificadorReal}`);
                 }
 
                for (const nome in nomes) {
-                    const celulaN = nomes[nome].valorCelula;
-                    const objNome = planilha[celulaN];
-                    const nomeReal = objNome ? objNome.v : "—";
+                    const celulaN = nomes[nome].valorCelula;//pega a célula do nome
+                    const objNome = planilha[celulaN];//pega o objeto da célula do nome
+                    const nomeReal = objNome ? objNome.v : "—";//se o "objNome" for nulo, undefined ou vazio, exibe "—"
 
-                    const elementoNome = document.getElementById(`valor-${nome}`);
+                    const elementoNome = document.getElementById(`valor-${nome}`);//
                     if (elementoNome) {
                         elementoNome.innerText = nomeReal;
                     }
                 }
- 
+
+
+                //#endregion
+                //#region processamento das perícias
                 // --- PROCESSAMENTO DAS PERÍCIAS ---
                 const containerPericias = document.getElementById("container-pericias");
                 if (containerPericias) {
@@ -135,13 +160,14 @@ document.addEventListener("DOMContentLoaded", function() {
                             artigoPericia.innerHTML = `
                              <h2>${nomeFormatado}</h2>
                              <p class="pericia_valor"><span>${valorFormatado}</span></p>
-                      `;
+                             `;
 
                             containerPericias.appendChild(artigoPericia);
-                            console.log(`Perícia Exibida: ${valorNomePericia} -> Total: ${valorTotal}`);
+                            //console.log(`Perícia Exibida: ${valorNomePericia} -> Total: ${valorTotal}`);
                         }
                     }
                 }
+                // #endregion
 
 
             };

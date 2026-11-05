@@ -1,3 +1,12 @@
+:root {
+    --cor-fundo: #111116;
+    --cor-texto: #f2f2f2;
+    --cor-destaque: #a78bfa;
+    --cor-secundaria: #1d1b25;
+    --cor-borda: #393344;
+    --cor-atributo: #c4b5fd;
+    --cor-modificador: #bdbdbd;
+}
 * {
     margin: 0;
     padding: 0;
@@ -12,9 +21,10 @@ body {
 }
 
 .pagina {
-    width: min(900px, 90%);
-    margin: 0 auto;
-    padding: 60px 0;
+    width: 95%; /* Ocupa quase toda a largura para ficar mais perto das bordas */
+    max-width: 1200px; /* Expandido para acomodar confortavelmente as 6 colunas */
+    margin: 0 0 0 20px; /* Alinha mais perto da lateral esquerda */
+    padding: 40px 0;
 }
 
 .cabecalho {
@@ -23,7 +33,7 @@ body {
 }
 
 .subtitulo {
-    color: #a78bfa;
+    color: var( --cor-destaque);
     font-size: 0.8rem;
     font-weight: bold;
     letter-spacing: 4px;
@@ -50,16 +60,19 @@ body {
 
 /* Painel Lateral Direito (Vida, Energia e Foto) */
 .painel-lateral {
-    background-color: #1d1b25;
-    border: 1px solid #393344;
-    border-radius: 12px;
-    padding: 20px;
+   
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: sticky;
-    top: 20px;
+    /*position: static;  Alterado de sticky para static: agora rola junto com a página */
 }
+.status-grupo {
+     background-color: #1d1b25;
+    border: 1px solid #393344;
+    border-radius: 12px;
+    padding: 20px;
+}
+
 
 .descricao {
     color: #aaa6b5;
@@ -88,7 +101,7 @@ body {
 }
 
 .atributo h2 {
-    color: #c4b5fd;
+    color: var( --cor-atributo);
     font-size: 1rem;
     margin-bottom: 14px;
 }
@@ -105,59 +118,60 @@ body {
     font-weight: 600;
 }
 
-
-/* Estilo para o container de perícias em 4 colunas */
+/* Estilo para o container de perícias em 6 colunas */
 .pericias {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Cria 4 colunas de largura igual */
-    gap: 16px; /* Espaçamento entre os cards de perícia */
+    grid-template-columns: repeat(7, 1fr); /* Alterado para 6 colunas de largura igual */
+    gap: 10px; /* Reduzido o espaçamento para caber melhor */
     margin-top: 15px;
 }
 
-/* Estilo opcional para os cards individuais de perícia */
+/* Cards individuais de perícia com fontes menores */
 .pericia {
-    background-color: #1d1b25; /* Altere para a cor/estilo do seu tema */
+    background-color: #1d1b25;
     border: 1px solid #393344;
     border-radius: 8px;
-    padding: 12px;
+    padding: 8px 4px; /* Padding reduzido para economizar espaço */
     text-align: center;
 }
 
-.pericia_valor {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #c4b5fd;
+.pericia h2 {
+    font-size: 0.75rem; /* Fonte do título menor */
+    color: var( --cor-atributo);
+    margin-bottom: 4px;
+    word-break: break-word; /* Evita que nomes longos quebrem o card */
+    
 }
 
-
+.pericia_valor {
+    font-size: 1.1rem; /* Fonte do valor menor */
+    font-weight: bold;
+    color: var( --cor-texto);
+}
 
 .pericia:hover {
     transform: translateY(-4px);
     border-color: #8b5cf6;
 }
 
-
-/* Responsividade: para telas menores (ex: celulares), reduz para 1 ou 2 colunas 
-@media (max-width: 768px) {
+/* Responsividade para telas menores */
+@media (max-width: 900px) {
     .pericias {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 480px) {
-    .pericias {
+@media (max-width: 600px) {
+    .conteudo-principal {
         grid-template-columns: 1fr;
     }
-}
-*/
-
-/* Ajuste para telas menores */
-@media (max-width: 600px) {
+    
     .atributos {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .pagina {
+        margin: 0 auto;
         padding-top: 40px;
     }
 
